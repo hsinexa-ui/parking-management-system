@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: parking-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: parking-backend
+    ports:
+      - "5000:8080"
+    volumes:
+      - parking-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  parking-data:

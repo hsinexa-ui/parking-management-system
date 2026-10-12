@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Parking System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <h1>
+            🚗 Smart Parking Management System
+        </h1>
+
+        <p>
+            Manage parking slots and vehicle records easily
+        </p>
+
+    </header>
+
+
+
+    <!-- Dashboard Cards -->
+
+
+    <div class="dashboard">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🅿️
+            </div>
+
+            <h3>
+                Total Slots
+            </h3>
+
+            <h2 id="totalSlots">
+                20
+            </h2>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                ✅
+            </div>
+
+            <h3>
+                Available Slots
+            </h3>
+
+            <h2 id="availableSlots">
+                20
+            </h2>
+
+        </div>
+
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚘
+            </div>
+
+            <h3>
+                Occupied Slots
+            </h3>
+
+            <h2 id="occupiedSlots">
+                0
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Entry Form -->
+
+
+    <div class="box">
+
+
+        <h2>
+            Vehicle Entry
+        </h2>
+
+
+
+        <div class="input-group">
+
+
+            <label>
+                Vehicle Number
+            </label>
+
+
+            <input 
+            type="text"
+            id="vehicleNumber"
+            placeholder="LEA-1234">
+
+
+        </div>
+
+
+
+
+
+        <div class="input-group">
+
+
+            <label>
+                Vehicle Type
+            </label>
+
+
+            <select id="vehicleType">
+
+
+                <option value="">
+                    Select Type
+                </option>
+
+
+                <option value="Car">
+                    🚗 Car
+                </option>
+
+
+                <option value="Bike">
+                    🏍 Bike
+                </option>
+
+
+                <option value="Truck">
+                    🚚 Truck
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+
+
+
+        <button onclick="parkVehicle()">
+
+            Park Vehicle
+
+        </button>
+
+
+
+        <p id="message"></p>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Search -->
+
+    <div class="box">
+
+
+        <h2>
+            Search Vehicle
+        </h2>
+
+
+        <input
+        type="text"
+        id="search"
+        placeholder="Search vehicle number..."
+        onkeyup="searchVehicle()">
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Table -->
+
+
+    <div class="box">
+
+
+        <h2>
+            Parking Records
+        </h2>
+
+
+
+        <div class="table-wrapper">
+
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Vehicle</th>
+
+                    <th>Type</th>
+
+                    <th>Entry Time</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+
+            </thead>
+
+
+
+            <tbody id="parkingTable">
+
+
+            </tbody>
+
+
+        </table>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
