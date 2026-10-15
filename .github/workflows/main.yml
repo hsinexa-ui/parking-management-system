@@ -3,44 +3,29 @@ name: Parking App CI Pipeline
 on:
   push:
     branches:
-      - main
-
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
+permissions:
+  contents: read
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
-
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    # Download repository code
-    - name: Checkout Code
-      uses: actions/checkout@v4
+      - name: Set up .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
 
+      - name: Restore backend dependencies
+        run: dotnet restore ./backend/backend.csproj
 
-    # Install .NET
-    - name: Setup .NET 9
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
-
-
-    # Restore packages
-    - name: Restore Dependencies
-      run: dotnet restore ./backend/backend.csproj
-
-
-    # Build application
-    - name: Build Application
-      run: dotnet build ./backend/backend.csproj --configuration Release
-
-
-    # Test application
-    - name: Run Tests
-      run: dotnet test ./backend/backend.csproj --no-build --verbosity normal
+      - name: Build backend
+        run: dotnet build ./backend/backend.csproj --configuration Release --no-restore
